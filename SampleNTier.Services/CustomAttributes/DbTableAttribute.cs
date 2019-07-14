@@ -28,7 +28,7 @@ namespace Sample.NTier.Services.CustomAttributes
                     Schema = (oracleSchema ?? ConfigurationManager.AppSettings["DefaultDbSchema"]);
                     break;
                 case DbProviders.PostgreSql:
-                    Schema = (postgreSqlSchema ?? ConfigurationManager.AppSettings["DefaultDbSchema"]);
+                    Schema = (postgreSqlSchema ?? ConfigurationManager.AppSettings["DefaultDbSchema"]) ?? "public";
                     break;
                 case DbProviders.MySql:
                     Schema = (mySqlSchema ?? ConfigurationManager.AppSettings["DefaultDbSchema"]) ?? "sys";

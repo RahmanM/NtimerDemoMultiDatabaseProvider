@@ -13,18 +13,18 @@ namespace Sample.NTier.Services.CustomAttributes
                 if (_dbProvider != DbProviders.None)
                     return _dbProvider;
 
-                switch (ConfigurationManager.ConnectionStrings["CustomersConnectionString"].ProviderName)
+                switch (ConfigurationManager.AppSettings["DatabaseProviderName"])
                 {
-                    case "System.Data.SqlClient":
+                    case "MSSql":
                         _dbProvider = DbProviders.MsSql;
                         break;
-                    case "Oracle.ManagedDataAccess.Client":
+                    case "Oracle":
                         _dbProvider = DbProviders.Oracle;
                         break;
-                    case "Npgsql":
+                    case "PostgreSql":
                         _dbProvider = DbProviders.PostgreSql;
                         break;
-                    case "MySql.Data.MySqlClient":
+                    case "MySql":
                         _dbProvider = DbProviders.MySql;
                         break;
                 }

@@ -11,10 +11,22 @@ namespace Sample.NTier.Services.CustomAttributes
     /// </summary>
     public class MyDbConfigurationAttribute : DbConfigurationTypeAttribute
     {
-        public MyDbConfigurationAttribute(Type configurationType) : base(Tools.DbProvider == DbProviders.MySql
-                        ? typeof(MySqlEFConfiguration)
-                        : null)
+        public MyDbConfigurationAttribute(Type configurationType) : base(GetDbConfigurationByProvider())
         {
+        }
+
+        private static Type GetDbConfigurationByProvider()
+        {
+            return Tools.DbProvider == 
+                                DbProviders.MySql
+                                    ? typeof(MySqlEFConfiguration)
+                                    : 
+                                Tools.DbProvider == DbProviders.MsSql
+                                    ? typeof(SqlConfiguration)
+                                    :
+                                Tools.DbProvider == DbProviders.PostgreSql
+                                    ? typeof(NpgSqlConfiguration)
+                                    : null;
         }
     }
 }
