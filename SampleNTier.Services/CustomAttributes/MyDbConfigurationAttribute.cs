@@ -7,7 +7,6 @@ namespace Sample.NTier.Services.CustomAttributes
     /// <summary>
     /// For MySQL we need to set the context to typeof(MySqlEFConfiguration) otherwise there will be null reference exception
     /// 
-    /// For all the others to be null in this stage
     /// </summary>
     public class MyDbConfigurationAttribute : DbConfigurationTypeAttribute
     {
